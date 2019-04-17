@@ -1,5 +1,5 @@
 FROM sanguohot/cgo:v1.12.4
-WORKDIR /opt/medichain
+WORKDIR /opt/welcome
 COPY . .
 #禁用cgo
 #RUN CGO_ENABLED=0 GOOS=linux go build -a -installsuffix cgo -o main -v
@@ -16,7 +16,6 @@ ENV WELCOME_PATH=/root
 ENV WELCOME_TYPE=production
 COPY ca-certificates.crt /etc/ssl/certs/
 COPY etc/config.json ./etc/
-COPY sql/tbl_file_add_event_log.sql ./sql/
-COPY --from=0 /opt/medichain/main .
+COPY --from=0 /opt/welcome/main .
 EXPOSE 8443/tcp
 ENTRYPOINT ["./main"]

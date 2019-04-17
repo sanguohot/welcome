@@ -1,6 +1,6 @@
 #!/bin/bash
 set -o errexit
-source shell/docker_img.sh
+source build/docker_img.sh
 IMG=$(SetDockerImg $1)
 if [[ ${IMG} == error:* ]]; then
     echo "${IMG}"
